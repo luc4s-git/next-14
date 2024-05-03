@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function page() {
+export default function Home() {
   return (
     <div>
       <h1 className="text-7xl capitalize italic">ad victoriam</h1>
