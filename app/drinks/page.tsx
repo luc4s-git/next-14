@@ -1,8 +1,9 @@
+import DrinksList from '@/components/drinks/DrinksList';
 import { DrinksData } from '@/utils/interfaces/drinks';
 
 const URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a';
 
-const fetchDrinks = async (): Promise<DrinksData | null> => {
+const fetchDrinks = async (): Promise<DrinksData> => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const response = await fetch(URL);
 
@@ -19,9 +20,7 @@ const DrinksPage = async () => {
 
   return (
     <div>
-      {data?.drinks.map((item) => {
-        return <h1 key={item.idDrink}>{item.strDrink}</h1>;
-      })}
+      <DrinksList drinks={data?.drinks}></DrinksList>
     </div>
   );
 };
