@@ -1,8 +1,8 @@
 'use client';
 
-const error = (error: { error: { message: string } }) => {
+const error = ({ error }: { error: Error }) => {
   console.log(error);
-  return <div>{error.error.message}</div>;
+  return <div>{error.message}</div>;
 };
 
 export default error;
