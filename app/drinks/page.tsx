@@ -1,10 +1,16 @@
-import DrinksFetch from '@/utils/interfaces/drinks';
+import { DrinksData } from '@/utils/interfaces/drinks';
 
 const URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a';
 
-const DrinksPage = async () => {
+const fetchDrinks = async (): Promise<DrinksData> => {
   const response = await fetch(URL);
-  const data: DrinksFetch = await response.json();
+  const data = await response.json();
+
+  return data;
+};
+
+const DrinksPage = async () => {
+  const data = await fetchDrinks();
 
   return (
     <div>

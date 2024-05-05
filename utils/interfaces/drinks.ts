@@ -1,4 +1,4 @@
-type Drink = {
+export type Drink = {
   idDrink: string;
   strDrink: string;
   strDrinkAlternate: string;
@@ -52,8 +52,6 @@ type Drink = {
   dateModified: string;
 };
 
-type DrinksFetch = {
+export type DrinksData = {
   drinks: Drink[];
 };
-
-export default DrinksFetch;
