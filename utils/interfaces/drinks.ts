@@ -1,4 +1,6 @@
 export type Drink = {
+  'strInstructionsZH-HANT': string;
+  'strInstructionsZH-HANS': string;
   idDrink: string;
   strDrink: string;
   strDrinkAlternate: string;
@@ -13,8 +15,6 @@ export type Drink = {
   strInstructionsDE: string;
   strInstructionsFR: string;
   strInstructionsIT: string;
-  'strInstructionsZH-HANS': string;
-  'strInstructionsZH-HANT': string;
   strDrinkThumb: string;
   strIngredient1: string;
   strIngredient2: string;
