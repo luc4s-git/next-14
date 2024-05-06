@@ -4,22 +4,27 @@ import Link from 'next/link';
 
 export default function DrinksList({ drinks }: DrinksData) {
   return (
-    <ul className="menu menu-vertical">
+    <ul className="grid grid-cols-2 gap-x-9 menu menu-vertical">
       {drinks.map((drink) => {
         return (
           <li key={drink.idDrink}>
             <Link
-              className="flex flex-col items-start"
+              className="grid grid-cols-2"
               key={drink.idDrink}
               href={`/drinks/${drink.strDrink}`}
             >
               <Image
                 src={drink.strDrinkThumb}
                 alt={drink.strDrink}
-                width="200"
-                height="200"
+                width="300"
+                height="300"
               ></Image>
-              <h4>{drink.strDrink}</h4>
+              <div>
+                <h4 className="text-xl text-center font-bold">
+                  {drink.strDrink}
+                </h4>
+                <p className="text-center">{drink?.strCategory || ''}</p>
+              </div>
             </Link>
           </li>
         );

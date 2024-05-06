@@ -10,7 +10,7 @@ export default function DrinksLayout({
   };
 }) {
   return (
-    <div className="max-w-xl">
+    <div className="max-w-3xl m-auto">
       <div className="mockup-code mb-8">
         <pre data-prefix="$">
           <code>npx create-next-app@latest new-project</code>
