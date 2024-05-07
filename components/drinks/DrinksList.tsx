@@ -11,7 +11,7 @@ export default function DrinksList({ drinks }: DrinksData) {
             <Link
               className="grid grid-cols-2"
               key={drink.idDrink}
-              href={`/drinks/${drink.strDrink}`}
+              href={`/drinks/${drink.idDrink}`}
             >
               <Image
                 src={drink.strDrinkThumb}

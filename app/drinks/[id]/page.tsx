@@ -3,8 +3,10 @@ import Image from 'next/image';
 
 const fetchSingleDrink = async (id: string) => {
   const response = await fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${id}`
+    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
   );
+
+  if (!response.ok) throw new Error('Failed to fetch a drink...');
 
   const data = response.json();
   return data;
