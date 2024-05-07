@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function DrinksList({ drinks }: DrinksData) {
   return (
-    <ul className="grid grid-cols-2 gap-x-9 menu menu-vertical">
+    <ul className="grid grid-cols-1 sm:grid-cols-2  gap-x-9 menu menu-vertical">
       {drinks.map((drink) => {
         return (
           <li key={drink.idDrink}>

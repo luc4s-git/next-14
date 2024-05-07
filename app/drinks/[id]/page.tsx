@@ -15,17 +15,21 @@ const fetchSingleDrink = async (id: string) => {
 const SingleDrinkPage = async ({ params }: { params: { id: string } }) => {
   const { drinks }: DrinksData = await fetchSingleDrink(params.id);
 
+  const title = drinks[0]?.strDrink;
+  const category = drinks[0]?.strCategory;
+  const thumbnail = drinks[0]?.strDrinkThumb;
+
   return (
     <div>
       <Image
-        src={drinks[0].strDrinkThumb}
-        alt={drinks[0].strDrink}
+        src={thumbnail}
+        alt={title}
         width={300}
         height={300}
         className="img rounded-xl mb-8"
       ></Image>
-      <h1 className="text-7xl">{drinks[0].strDrink}</h1>
-      <p>{drinks[0].strCategory}</p>
+      <h1 className="text-7xl">{title}</h1>
+      <p>{category}</p>
     </div>
   );
 };
