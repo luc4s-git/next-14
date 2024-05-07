@@ -11,12 +11,11 @@ export default function DrinksLayout({
 }) {
   return (
     <div className="max-w-3xl m-auto">
-      <div className="mockup-code mb-8">
-        <pre data-prefix="$">
-          <code>npx create-next-app@latest new-project</code>
-        </pre>
+      <div className="mockup-window border border-base-300">
+        <div className="flex justify-center px-4 py-16 border-t border-base-300">
+          {children}
+        </div>
       </div>
-      {children}
     </div>
   );
 }

@@ -13,12 +13,14 @@ export default function DrinksList({ drinks }: DrinksData) {
               key={drink.idDrink}
               href={`/drinks/${drink.idDrink}`}
             >
-              <Image
-                src={drink.strDrinkThumb}
-                alt={drink.strDrink}
-                width="300"
-                height="300"
-              ></Image>
+              <div>
+                <Image
+                  src={drink.strDrinkThumb}
+                  alt={drink.strDrink}
+                  width={300}
+                  height={300}
+                ></Image>
+              </div>
               <div>
                 <h4 className="text-xl text-center font-bold">
                   {drink.strDrink}
