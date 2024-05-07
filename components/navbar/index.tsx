@@ -4,7 +4,7 @@ const pages = [
   { label: 'client', href: '/client' },
   { label: 'drinks', href: '/drinks' },
   { label: 'tasks', href: '/tasks' },
-  { label: 'query', href: '/query' },
+  { label: 'prisma', href: '/prisma-example' },
 ];
 
 export default function Navbar() {
