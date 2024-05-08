@@ -1,19 +1,10 @@
-import prisma from '@/utils/db/db';
 import { FilePenLine } from 'lucide-react';
-import { TaskType } from '@/utils/interfaces/drinks';
 import Link from 'next/link';
 import DeleteForm from './DeleteForm';
-
-const prismaTasks = async (): Promise<TaskType[]> => {
-  const tasks = await prisma.task.findMany({
-    orderBy: { createdAt: 'asc' },
-  });
-
-  return tasks;
-};
+import { getAllTasks } from '@/utils/actions/getAllTasks';
 
 export default async function TaskList() {
-  const tasks = await prismaTasks();
+  const tasks = await getAllTasks();
 
   return (
     <ul className="mt-8">
