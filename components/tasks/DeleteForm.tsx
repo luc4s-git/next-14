@@ -1,3 +1,11 @@
+import { FileX } from 'lucide-react';
+
+const deleteTask = async () => {};
+
 export default function DeleteForm() {
-  return <div>DeleteForm</div>;
+  return (
+    <button className="btn btn-secondary btn-sm">
+      <FileX />
+    </button>
+  );
 }

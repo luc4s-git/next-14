@@ -1,7 +1,10 @@
 import prisma from '@/utils/db/db';
-import { BadgeX, FilePenLine } from 'lucide-react';
+import { FilePenLine } from 'lucide-react';
+import { TaskType } from '@/utils/interfaces/drinks';
+import Link from 'next/link';
+import DeleteForm from './DeleteForm';
 
-const prismaTasks = async () => {
+const prismaTasks = async (): Promise<TaskType[]> => {
   const tasks = await prisma.task.findMany({
     orderBy: { createdAt: 'asc' },
   });
@@ -13,24 +16,36 @@ export default async function TaskList() {
   const tasks = await prismaTasks();
 
   return (
-    <div className="flex flex-col items-center mt-8">
-      {tasks.map((task) => {
-        return (
-          <div key={task.id} className="card shadow-md w-full">
-            <div className="card-body items-center justify-between flex-row">
-              <h1 className="capitalize">{task.content}</h1>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">
+    <ul className="mt-8">
+      {tasks.length === 0 ? (
+        <h2 className="mt-8 font-medium text-lg">No tasks to show...</h2>
+      ) : (
+        tasks.map((task) => {
+          return (
+            <li
+              key={task.id}
+              className="flex justify-between items-center px-6 py-4 mb-4 border border-base-300 rounded-lg shadow-lg"
+            >
+              <h2
+                className={`text-lg capitalize ${
+                  task.completed && 'line-through'
+                }`}
+              >
+                {task.content}
+              </h2>
+              <div className="flex gap-2 items-center">
+                <Link
+                  href={`/tasks/${task.id}`}
+                  className="btn btn-primary btn-sm"
+                >
                   <FilePenLine />
-                </button>
-                <button className="btn btn-secondary">
-                  <BadgeX />
-                </button>
+                </Link>
+                <DeleteForm />
               </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+            </li>
+          );
+        })
+      )}
+    </ul>
   );
 }
