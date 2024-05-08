@@ -1,37 +1,34 @@
-'use client';
-
 import prisma from '@/utils/db/db';
-import { FormEvent } from 'react';
 
-const handleForm = async (e: FormEvent): Promise<void> => {
-  e.preventDefault();
-  const taskElement = e.currentTarget as HTMLFormElement;
-  const task = taskElement.task.value;
+const createTask = async (formData: FormData) => {
+  'use server';
 
-  if (!task) return;
+  const inputValue = formData.get('task');
+
+  if (!inputValue) return;
 
   await prisma.task.create({
     data: {
-      content: task,
+      content: inputValue.toString(),
     },
   });
 };
 
 export default function TaskForm() {
   return (
-    <form
-      onSubmit={(e: FormEvent) => handleForm(e)}
-      className="flex items-center justify-center"
-    >
-      <input
-        type="text"
-        name="task"
-        placeholder="Type here"
-        className="input input-bordered w-full max-w-xs rounded-tr-none rounded-br-none"
-      />
-      <button className="btn btn-primary uppercase rounded-tl-none rounded-bl-none">
-        Create Task
-      </button>
+    <form action={createTask}>
+      <div className="join w-full">
+        <input
+          type="text"
+          className="input input-bordered join-item w-full"
+          placeholder="Type Here"
+          name="task"
+          required
+        />
+        <button type="submit" className="btn btn-primary join-item capitalize">
+          create task
+        </button>
+      </div>
     </form>
   );
 }

@@ -40,7 +40,7 @@ export default async function TaskList() {
                 >
                   <FilePenLine />
                 </Link>
-                <DeleteForm />
+                <DeleteForm taskId={task.id} />
               </div>
             </li>
           );
