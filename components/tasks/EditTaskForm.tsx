@@ -11,8 +11,9 @@ export default function EditTaskForm(task: TaskType) {
       <input
         type="text"
         name="task"
-        value={task.content}
+        defaultValue={task.content}
         className="input input-bordered w-full capitalize"
+        required
       />
       <div className="form-control my-4">
         <label htmlFor="completed" className="label cursor-pointer">
@@ -22,7 +23,7 @@ export default function EditTaskForm(task: TaskType) {
             name="completed"
             id="completed"
             className="checkbox checkbox-primary checkbox-sm"
-            checked={task.completed}
+            defaultChecked={task.completed}
           />
         </label>
       </div>

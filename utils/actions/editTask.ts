@@ -6,6 +6,7 @@ import prisma from '../db/db';
 export const editTask = async (formData: FormData) => {
   const task = formData.get('task')?.toString();
   const id = formData.get('id')?.toString();
+  const completed = formData.get('completed') === 'on';
 
   if (!task || !id) return;
 
@@ -15,6 +16,7 @@ export const editTask = async (formData: FormData) => {
     },
     data: {
       content: task,
+      completed: completed,
     },
   });
 
