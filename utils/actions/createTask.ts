@@ -2,17 +2,26 @@
 
 import { revalidatePath } from 'next/cache';
 import prisma from '../db/db';
+import { State } from '../interfaces/tasks';
 
-export const createTask = async (formData: FormData) => {
+export const createTask = async (
+  prevState: State,
+  formData: FormData
+): Promise<State> => {
   const inputValue = formData.get('task')?.toString();
 
-  if (!inputValue) return;
+  if (!inputValue) return { message: 'Input value was not provided' };
 
-  await prisma.task.create({
-    data: {
-      content: inputValue,
-    },
-  });
+  try {
+    await prisma.task.create({
+      data: {
+        content: inputValue,
+      },
+    });
 
-  revalidatePath('/tasks');
+    revalidatePath('/tasks');
+    return { message: 'Success' };
+  } catch (error) {
+    return { message: 'Error...' };
+  }
 };

@@ -1,5 +1,5 @@
 import prisma from '../db/db';
-import { TaskType } from '../interfaces/drinks';
+import { TaskType } from '../interfaces/tasks';
 
 export const getSingleTask = async (id: string): Promise<TaskType | null> => {
   const task = await prisma.task.findUnique({

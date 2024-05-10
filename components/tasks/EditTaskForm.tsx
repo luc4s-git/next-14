@@ -1,5 +1,5 @@
 import { editTask } from '@/utils/actions/editTask';
-import { TaskType } from '@/utils/interfaces/drinks';
+import { TaskType } from '@/utils/interfaces/tasks';
 
 export default function EditTaskForm(task: TaskType) {
   return (

@@ -58,10 +58,3 @@ export type Drink = {
 export type DrinksData = {
   drinks: Drink[];
 };
-
-export interface TaskType {
-  id: string;
-  content: string;
-  createdAt: Date;
-  completed: boolean;
-}

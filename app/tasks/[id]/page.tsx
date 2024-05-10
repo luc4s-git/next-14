@@ -1,8 +1,8 @@
-import { TaskType } from '@/utils/interfaces/drinks';
 import { Bird } from 'lucide-react';
 import { getSingleTask } from '@/utils/actions/getSingleTask';
 import Link from 'next/link';
 import EditTaskForm from '@/components/tasks/EditTaskForm';
+import { TaskType } from '@/utils/interfaces/tasks';
 
 export default async function SingleTask({
   params,
