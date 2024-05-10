@@ -1,6 +1,6 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import prisma from '../db/db';
 
 export const editTask = async (formData: FormData) => {
@@ -20,5 +20,5 @@ export const editTask = async (formData: FormData) => {
     },
   });
 
-  revalidatePath('/tasks/**');
+  redirect('/tasks');
 };

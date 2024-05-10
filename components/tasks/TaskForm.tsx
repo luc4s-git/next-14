@@ -1,4 +1,21 @@
+'use client';
+
 import { createTask } from '@/utils/actions/createTask';
+import { useFormStatus } from 'react-dom';
+
+const SubmitBtn = () => {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      type="submit"
+      className="btn btn-primary join-item capitalize"
+      disabled={pending}
+    >
+      {pending ? 'please wait...' : 'create task'}
+    </button>
+  );
+};
 
 export default function TaskForm() {
   return (
@@ -11,9 +28,7 @@ export default function TaskForm() {
           name="task"
           required
         />
-        <button type="submit" className="btn btn-primary join-item capitalize">
-          create task
-        </button>
+        <SubmitBtn />
       </div>
     </form>
   );
