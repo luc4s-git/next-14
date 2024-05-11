@@ -4,18 +4,26 @@ import { revalidatePath } from 'next/cache';
 import prisma from '../db/db';
 import { State } from '../interfaces/tasks';
 
+import { z } from 'zod';
+
 export const createTask = async (
   prevState: State,
   formData: FormData
 ): Promise<State> => {
-  const inputValue = formData.get('task')?.toString();
+  const content = formData.get('task')?.toString();
 
-  if (!inputValue) return { message: 'Input value was not provided' };
+  if (!content) return { message: 'Input value was not provided' };
+
+  const Task = z.object({
+    content: z.string().min(5),
+  });
 
   try {
+    Task.parse({ content: content });
+
     await prisma.task.create({
       data: {
-        content: inputValue,
+        content: content,
       },
     });
 
