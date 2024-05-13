@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import prisma from '../db/db';
 import { State } from '../interfaces/tasks';
 
-import { z } from 'zod';
+import { ZodError, z } from 'zod';
 
 export const createTask = async (
   prevState: State,
@@ -30,6 +30,9 @@ export const createTask = async (
     revalidatePath('/tasks');
     return { message: 'success' };
   } catch (error) {
+    if (error instanceof ZodError) {
+      return { message: error.issues.map((error) => error.code) };
+    }
     return { message: 'error' };
   }
 };

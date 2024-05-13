@@ -6,5 +6,5 @@ export interface TaskType {
 }
 
 export type State = {
-  message: string | null;
+  message: string[] | string | null;
 };
