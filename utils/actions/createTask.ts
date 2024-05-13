@@ -28,8 +28,8 @@ export const createTask = async (
     });
 
     revalidatePath('/tasks');
-    return { message: 'Success' };
+    return { message: 'success' };
   } catch (error) {
-    return { message: 'Error...' };
+    return { message: 'error' };
   }
 };
