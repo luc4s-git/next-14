@@ -15,7 +15,7 @@ export const createTask = async (
   if (!content) return { message: 'Input value was not provided' };
 
   const Task = z.object({
-    content: z.string().min(5),
+    content: z.string().min(3),
   });
 
   try {
