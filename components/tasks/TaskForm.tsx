@@ -28,12 +28,22 @@ export default function TaskForm() {
 
   useEffect(() => {
     if (state.message === 'error') {
-      toast.error('There was an error.');
+      toast.error('There was an error.', {
+        style: {
+          background: '#1d232a',
+          color: '#fff',
+        },
+      });
       return;
     }
 
     if (state.message === 'success') {
-      toast.success('Task created.');
+      toast.success('Task created.', {
+        style: {
+          background: '#1d232a',
+          color: '#fff',
+        },
+      });
       return;
     }
   }, [state]);
