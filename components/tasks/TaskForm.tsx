@@ -4,7 +4,6 @@ import { createTask } from '@/utils/actions/createTask';
 import { useEffect } from 'react';
 import { useFormStatus, useFormState } from 'react-dom';
 import toast from 'react-hot-toast';
-import { string } from 'zod';
 
 const SubmitBtn = () => {
   const { pending } = useFormStatus();
@@ -55,6 +54,17 @@ export default function TaskForm() {
           color: '#fff',
         },
       });
+      return;
+    }
+
+    if (state.message?.includes('too_big')) {
+      toast.error('Task input exceeded the maximum length of 124.', {
+        style: {
+          background: '#1d232a',
+          color: '#fff',
+        },
+      });
+      return;
     }
   }, [state]);
 

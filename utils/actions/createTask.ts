@@ -15,7 +15,7 @@ export const createTask = async (
   if (!content) return { message: 'Input value was not provided' };
 
   const Task = z.object({
-    content: z.string().min(3),
+    content: z.string().min(3).max(124),
   });
 
   try {
@@ -31,7 +31,11 @@ export const createTask = async (
     return { message: 'success' };
   } catch (error) {
     if (error instanceof ZodError) {
-      return { message: error.issues.map((error) => error.code) };
+      return {
+        message: error.issues.map((error) => {
+          return error.code;
+        }),
+      };
     }
     return { message: 'error' };
   }
