@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import prisma from '../db/db';
+import { revalidatePath } from 'next/cache';
 
 export const editTask = async (formData: FormData) => {
   const task = formData.get('task')?.toString();
@@ -20,5 +21,6 @@ export const editTask = async (formData: FormData) => {
     },
   });
 
+  revalidatePath('/tasks');
   redirect('/tasks');
 };
